@@ -15,7 +15,12 @@ import java.util.List;
 public class ReservationServiceImpl implements ReservationService {
 
     @Override
-    public void createReservation(ReservationRequestDto ReservationRequestDto) {
+    public void createReservationByUnregisteredCustomer(ReservationRequestDto ReservationRequestDto) {
+
+    }
+
+    @Override
+    public void createReservationByRegisteredCustomer(Long customerId, ReservationRequestDto ReservationRequestDto) {
 
     }
 

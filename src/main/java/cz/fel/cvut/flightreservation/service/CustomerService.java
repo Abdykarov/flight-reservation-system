@@ -5,6 +5,9 @@ import cz.fel.cvut.flightreservation.model.CustomerResponseDto;
 
 import java.util.List;
 
+/**
+ * Registered customer crud service
+ */
 public interface CustomerService {
 
     void createCustomer(CustomerRequestDto customerRequestDto);

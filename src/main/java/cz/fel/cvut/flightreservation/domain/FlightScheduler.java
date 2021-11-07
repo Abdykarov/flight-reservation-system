@@ -4,8 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -14,6 +13,11 @@ import java.util.Set;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FlightScheduler extends AbstractEntity{
     LocalDateTime schedulerDay;
-    @OneToMany(mappedBy="scheduler")
+
+    @ManyToMany
     Set<FlightEntity> flights;
+
+    @ManyToOne
+    @JoinColumn(name="airport_id", nullable=false)
+    AirportEntity airport;
 }

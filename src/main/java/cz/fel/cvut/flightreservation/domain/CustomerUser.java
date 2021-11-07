@@ -4,10 +4,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Data
@@ -15,10 +13,10 @@ import java.util.Set;
 @Entity
 public class CustomerUser extends UserEntity{
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_reservation",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "reservation_id"))
+    String citizenship;
+    String pass;
+    LocalDate birthDate;
+
+    @OneToMany(mappedBy="customerUser")
     Set<ReservationEntity> reservations;
 }

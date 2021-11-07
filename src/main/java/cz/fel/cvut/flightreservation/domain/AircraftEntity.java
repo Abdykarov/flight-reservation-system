@@ -17,8 +17,8 @@ public class AircraftEntity extends AbstractEntity{
     String aircraftModel;
     int seatsCount;
 
-    @OneToOne(mappedBy = "aircraft")
-    FlightEntity flight;
+    @OneToMany(mappedBy = "aircraft")
+    Set<FlightEntity> flights;
 
     @OneToMany(mappedBy="aircraft")
     Set<SeatEntity> seats;

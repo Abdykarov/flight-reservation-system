@@ -6,11 +6,13 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FlightEntity extends AbstractEntity{
+
     LocalDateTime arrivalTime;
     LocalDateTime departureTime;
     String flightCode;
@@ -23,15 +25,14 @@ public class FlightEntity extends AbstractEntity{
     @JoinColumn(name="airport_arrival_id", nullable=false)
     AirportEntity airportArrival;
 
-    @ManyToOne
-    @JoinColumn(name="scheduler_id", nullable=false)
-    FlightScheduler scheduler;
+    @ManyToMany
+    Set<FlightScheduler> schedulers;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id", referencedColumnName = "id")
     ReservationEntity reservation;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
     AircraftEntity aircraft;
 }

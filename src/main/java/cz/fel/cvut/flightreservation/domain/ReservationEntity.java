@@ -19,16 +19,18 @@ public class ReservationEntity extends AbstractEntity{
     @Enumerated(EnumType.STRING)
     ReservationState reservationState;
 
-    @ManyToMany(mappedBy = "reservations")
-    Set<CustomerUser> clients;
+    @ManyToOne
+    @JoinColumn(name="customer_id", nullable=false)
+    CustomerUser customerUser;
 
-    @OneToMany(mappedBy="reservation")
-    List<NotificationEntity> notifications;
-
-    @OneToOne(mappedBy = "reservation")
-    PaymentEntity payment;
-
-    @OneToOne(mappedBy = "reservation")
+    @ManyToOne
+    @JoinColumn(name="flight_id", nullable=false)
     FlightEntity flight;
+
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
+    Set<PassengerEntity> passengers;
+
+    @OneToMany(mappedBy="reservation", cascade = CascadeType.ALL)
+    List<NotificationEntity> notifications;
 
 }
