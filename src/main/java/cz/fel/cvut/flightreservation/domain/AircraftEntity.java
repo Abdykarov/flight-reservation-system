@@ -13,6 +13,7 @@ import java.util.Set;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AircraftEntity extends AbstractEntity{
+
     String aircraftModel;
     int seatsCount;
 

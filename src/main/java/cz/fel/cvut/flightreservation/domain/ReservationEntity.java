@@ -12,6 +12,7 @@ import java.util.Set;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReservationEntity extends AbstractEntity{
+
     String arrivalCountry;
     String departureCountry;
     String flightClass;
@@ -19,7 +20,7 @@ public class ReservationEntity extends AbstractEntity{
     ReservationState reservationState;
 
     @ManyToMany(mappedBy = "reservations")
-    Set<UserEntity> clients;
+    Set<CustomerUser> clients;
 
     @OneToMany(mappedBy="reservation")
     List<NotificationEntity> notifications;

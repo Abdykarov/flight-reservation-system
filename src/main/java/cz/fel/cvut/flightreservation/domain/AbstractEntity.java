@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class AbstractEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @CreatedDate
